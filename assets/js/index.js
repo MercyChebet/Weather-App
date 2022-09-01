@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
       let card2 = document.createElement('div')
       let card3 = document.createElement('div')
 
-      card1.classList.add('card-day')
-      card1.classList.add('card-day')
-      card2.classList.add('card-day')
+      card1.className = 'card-day'
+      card2.className = 'card-day'
+      card3.className = 'card-day'
       setLoading(card1)
       setLoading(card2)
       setLoading(card3)
@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
       fetchData('weather', 'London').then(data => {
             renderData(data, card1)
       })
-      fetchData('weather', 'Nairobi').then(data => {
-            renderData(data, card2)
-      })
-      fetchData('weather', 'New York').then(data => {
-            renderData(data, card3)
+      fetchData('forecast', "London").then(datal => {
+
+            renderForecast(datal, card2,1)
+            renderForecast(datal, card3,2)
+
       })
 
 })
@@ -43,13 +43,11 @@ function renderData(data, card) {
       const isDayTime = hours > 6 && hours < 20;
       const time = isDayTime ? 'Day' : 'Night'
       let parent = document.querySelector('.display')
-      let classNm = 'card-' + time.toLocaleLowerCase()
-      card.className = classNm
       console.log(data)
       let html = ''
       html = `
-            <div class="time">Today</div>
-            <div class="city">${data.name}</div>
+            <div class="time">${data.name}</div>
+            <div class="city">Today</div>
             <div class="desc">${data.weather[0].description}</div>
             <div class="details">
                   <div>
@@ -66,19 +64,8 @@ function renderData(data, card) {
                   </div>
             </div>
       `;
-      let forecastBtn = document.createElement('div')
-      forecastBtn.classList.add('btn')
-      forecastBtn.innerHTML = 'forecast'
-      forecastBtn.addEventListener('click', () => {
-            console.log('forecast')
-            fetchData('forecast', data.name).then(data => {
-                  console.log(data)
-                  renderForecast(data, card)
-            })
-      })
       removeLoading(card)
       card.innerHTML = html
-      card.appendChild(forecastBtn)
       parent.appendChild(card)
 
 }
@@ -97,34 +84,31 @@ function removeLoading(card) {
       card.innerHTML = ""
 }
 
-function renderForecast(data, card) {
-      let description = data.list[0].weather[0].description
-      console.log(description)
-      console.log(data.list[0])
-      card.innerHTML = description
-      // console.log(data.list[0].weather[0].description)
-      // console.log(card)
-      // let html = ''
-      // html = `
-      //       <div class="time">Day</div>
-      //       <div class="city">${data.name}</div>
-      //       <div class="desc">${data.list[0].weather[0].description}</div>
-      //       <div class="details">
-      //             <div>
-      //                   <div>Temperature</div>
-      //                   <div>${data.temp}</div>
-      //             </div>
-      //             <div>
-      //                   <div>Humidity</div>
-      //                   <div>${data.humidity}</div>
-      //             </div>
-      //             <div>
-      //                   <div>Wind Speed</div>
-      //                   <div>${data.wind}</div>
-      //             </div>
-      //       </div>
-      // `;
-      // card.innerHTML = html
+function renderForecast(data, card,day) {
+      console.log(data)
+      let description = data.list[8].weather[0].description
+      let d = day === 1 ? 'Tommorrow' : 'Next Day'
+      let ind = day === 1 ? 8 : 16
+      html = `
+            <div class="time">${data.city.name}</div>
+            <div class="city">${d}</div>
+            <div class="desc">${ data.list[ind].weather[0].description}</div>
+            <div class="details">
+                  <div>
+                        <div>Temperature</div>
+                        <div>${data.list[ind].main.temp}</div>
+                  </div>
+                  <div>
+                        <div>Humidity</div>
+                        <div>${data.list[ind].main.humidity}</div>
+                  </div>
+                  <div>
+                        <div>Wind Speed</div>
+                        <div>${data.list[ind].wind.speed}</div>
+                  </div>
+            </div>
+      `;
+      card.innerHTML = html
       // let forecastBtn = document.createElement('div')
       // forecastBtn.classList.add('btn')
       // forecastBtn.innerHTML = 'Current'
