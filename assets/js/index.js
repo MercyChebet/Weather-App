@@ -4,21 +4,21 @@ const forecast_url = base_url + 'forecast?q='
 const api_key = '&APPID=1729a6b082fe1edb7990e2bea663bb38'
 
 document.addEventListener('DOMContentLoaded', () => {
+      //get parent element
       let parent = document.querySelector('.display')
 
+      //
       let card1 = document.createElement('div')
       let card2 = document.createElement('div')
       let card3 = document.createElement('div')
 
-      card1.className = 'card-day'
-      card2.className = 'card-day'
-      card3.className = 'card-day'
-      setLoading(card1)
-      setLoading(card2)
-      setLoading(card3)
-      parent.appendChild(card1)
-      parent.appendChild(card2)
-      parent.appendChild(card3)
+      let cityField = document.getElementById('city')
+      document.getElementById('submit').addEventListener('click',()=>{
+            let city = cityField.value
+
+      })
+
+
 
       fetchData('weather', 'London').then(data => {
             renderData(data, card1)
@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             renderForecast(datal, card2,1)
             renderForecast(datal, card3,2)
+
 
       })
 
@@ -66,7 +67,6 @@ function renderData(data, card) {
       `;
       removeLoading(card)
       card.innerHTML = html
-      parent.appendChild(card)
 
 }
 
@@ -85,8 +85,6 @@ function removeLoading(card) {
 }
 
 function renderForecast(data, card,day) {
-      console.log(data)
-      let description = data.list[8].weather[0].description
       let d = day === 1 ? 'Tommorrow' : 'Next Day'
       let ind = day === 1 ? 8 : 16
       html = `
@@ -109,18 +107,4 @@ function renderForecast(data, card,day) {
             </div>
       `;
       card.innerHTML = html
-      // let forecastBtn = document.createElement('div')
-      // forecastBtn.classList.add('btn')
-      // forecastBtn.innerHTML = 'Current'
-      // forecastBtn.addEventListener('click', () => {
-      //       console.log('forecast')
-      //       fetchData('weather', data.name).then(data => {
-      //             console.log(data)
-      //             renderData(data)
-      //       })
-      // })
-      // card.appendChild(forecastBtn)
-      // parent.appendChild(card)
-
-
 }
