@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
       setLoading(card3)
 
       //append the children to parent elements
-      parent.appendChild(card1)
-      parent.appendChild(card2)
-      parent.appendChild(card3)
+      // parent.appendChild(card1)
+      // parent.appendChild(card2)
+      // parent.appendChild(card3)
 
       //Form
       let cityField = document.getElementById('city')
@@ -45,16 +45,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
       })
-      fetchData('weather', 'London').then(data => {
-            renderData(data, card1)
-      })
-      fetchData('forecast', "London").then(datal => {
+      // fetchData('weather', 'London').then(data => {
+      //       renderData(data, card1)
+      // })
+      // fetchData('forecast', "London").then(datal => {
 
-            renderForecast(datal, card2,1)
-            renderForecast(datal, card3,2)
+      //       renderForecast(datal, card2,1)
+      //       renderForecast(datal, card3,2)
 
 
-      })
+      // })
 
 })
 
@@ -67,8 +67,6 @@ async function fetchData(type, city) {
 function renderData(data, card) {
       const hours = new Date().getHours()
       const isDayTime = hours > 6 && hours < 20;
-      const time = isDayTime ? 'Day' : 'Night'
-      let parent = document.querySelector('.display')
       console.log(data)
       let html = ''
       html = `
