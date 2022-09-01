@@ -18,7 +18,7 @@
       justify-content: space-between;
       /* align-items: center; */
       margin:auto;
-      padding-bottom: 10rem;
+      padding-bottom: 6rem;
 }
 
 .form input{
@@ -44,4 +44,33 @@
       font-family: 'Inter', sans-serif;
       font-weight: bold;
       margin-left:1rem;
+}
+
+.card-day{
+      width:25%;
+      height: 30rem;
+      border-radius:15px;
+      box-shadow: 4px 2px 8px 3px rgba(0, 0, 0, 0.25);
+}
+
+.time{
+      height:15%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Paytone One', sans-serif;
+      font-size: 1.5rem;
+}
+
+.city{
+      height:25%;
+      background-color: #E20871;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Paytone One', sans-serif;
+      font-size: 2rem;
+}
+.display{
+      padding: 0 5rem;
 }
