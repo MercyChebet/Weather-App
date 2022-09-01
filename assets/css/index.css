@@ -1,4 +1,12 @@
-.header{
+.header {
+      color:#E20871;
       font-size: 3rem;
-      
+      /* font-family: 'Inter', sans-serif; */
+      font-family: 'Paytone One', sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 0;
+      margin-top: 3rem;
+      margin-bottom: 5rem;
 }
+
