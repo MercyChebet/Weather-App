@@ -51,16 +51,6 @@
       align-items: center;
 }
 
-/* .card-day{
-      color:white;
-      width:25rem;
-      height: 30rem;
-      border-radius:15px;
-      box-shadow: 4px 2px 8px 3px rgb(84, 0, 66);
-      background-color: black;
-      margin:2rem;
-} */
-
 .display > div:first-child{
       width:25rem;
       height: 30rem;
@@ -77,6 +67,11 @@
       box-shadow: 4px 2px 8px 3px rgb(84, 0, 66);
       margin:2rem;
       background-color: #E20871;
+}
+
+.display > div:nth-child(2) .btn{
+      background-color: white;
+      color: #E20871;
 }
 
 .display > div:nth-child(3){
@@ -128,7 +123,7 @@
 .btn{
       color:white;
       width: fit-content;
-      height:7%;
+      height:10%;
       padding: 0 2rem;
       background-color: #E20871;
       margin: auto;

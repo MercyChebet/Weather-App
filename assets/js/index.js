@@ -20,41 +20,45 @@ document.addEventListener('DOMContentLoaded', () => {
       setLoading(card2)
       setLoading(card3)
 
-      //append the children to parent elements
-      // parent.appendChild(card1)
-      // parent.appendChild(card2)
-      // parent.appendChild(card3)
+      // append the children to parent elements
+      parent.appendChild(card1)
+      parent.appendChild(card2)
+      parent.appendChild(card3)
 
       //Form
       let cityField = document.getElementById('city')
-      document.getElementById('city').addEventListener('change',(e)=>{
-            let city = e.value
+      document.getElementById('city').addEventListener('change', (e) => {
+
+            let city = e.target.value
             card1.innerHTML = ""
             card2.innerHTML = ""
             card3.innerHTML = ""
+            setLoading(card1)
+            setLoading(card2)
+            setLoading(card3)
             fetchData('weather', city).then(data => {
                   renderData(data, card1)
             })
             fetchData('forecast', city).then(datal => {
 
-                  renderForecast(datal, card2,1)
-                  renderForecast(datal, card3,2)
+                  renderForecast(datal, card2, 1)
+                  renderForecast(datal, card3, 2)
 
 
             })
 
 
       })
-      // fetchData('weather', 'London').then(data => {
-      //       renderData(data, card1)
-      // })
-      // fetchData('forecast', "London").then(datal => {
+      fetchData('weather', 'London').then(data => {
+            renderData(data, card1)
+      })
+      fetchData('forecast', "London").then(datal => {
 
-      //       renderForecast(datal, card2,1)
-      //       renderForecast(datal, card3,2)
+            renderForecast(datal, card2, 1)
+            renderForecast(datal, card3, 2)
 
 
-      // })
+      })
 
 })
 
@@ -86,6 +90,7 @@ function renderData(data, card) {
                         <div>Wind Speed</div>
                         <div>${data.wind.speed} km/h</div>
                   </div>
+                  <div class="btn">show more</div>
             </div>
       `;
       removeLoading(card)
@@ -107,13 +112,13 @@ function removeLoading(card) {
       card.innerHTML = ""
 }
 
-function renderForecast(data, card,day) {
+function renderForecast(data, card, day) {
       let d = day === 1 ? 'Tommorrow' : 'Next Day'
       let ind = day === 1 ? 8 : 16
       html = `
             <div class="time">${data.city.name}</div>
             <div class="city">${d}</div>
-            <div class="desc">${ data.list[ind].weather[0].description}</div>
+            <div class="desc">${data.list[ind].weather[0].description}</div>
             <div class="details">
                   <div>
                         <div>Temperature</div>
@@ -127,6 +132,7 @@ function renderForecast(data, card,day) {
                         <div>Wind Speed</div>
                         <div>${data.list[ind].wind.speed}</div>
                   </div>
+                  <div class="btn">show more</div>
             </div>
       `;
       card.innerHTML = html
