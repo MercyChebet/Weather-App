@@ -4,19 +4,26 @@ const forecast_url = base_url + 'forecast?q='
 const api_key = '&APPID=1729a6b082fe1edb7990e2bea663bb38'
 
 document.addEventListener('DOMContentLoaded', () => {
+      let parent = document.querySelector('.display')
+
       let card1 = document.createElement('div')
       let card2 = document.createElement('div')
       let card3 = document.createElement('div')
+
       card1.classList.add('card-day')
       card1.classList.add('card-day')
       card2.classList.add('card-day')
       setLoading(card1)
       setLoading(card2)
       setLoading(card3)
+      parent.appendChild(card1)
+      parent.appendChild(card2)
+      parent.appendChild(card3)
+
       fetchData('weather', 'London').then(data => {
             renderData(data, card1)
       })
-      fetchData('weather', 'Nairobu').then(data => {
+      fetchData('weather', 'Nairobi').then(data => {
             renderData(data, card2)
       })
       fetchData('weather', 'New York').then(data => {
