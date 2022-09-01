@@ -25,14 +25,26 @@ document.addEventListener('DOMContentLoaded', () => {
       parent.appendChild(card2)
       parent.appendChild(card3)
 
+      //Form
       let cityField = document.getElementById('city')
       document.getElementById('submit').addEventListener('click',()=>{
             let city = cityField.value
+            card1.innerHTML = ""
+            card2.innerHTML = ""
+            card3.innerHTML = ""
+            fetchData('weather', city).then(data => {
+                  renderData(data, card1)
+            })
+            fetchData('forecast', city).then(datal => {
+
+                  renderForecast(datal, card2,1)
+                  renderForecast(datal, card3,2)
+
+
+            })
+
 
       })
-
-
-
       fetchData('weather', 'London').then(data => {
             renderData(data, card1)
       })
