@@ -7,10 +7,23 @@ document.addEventListener('DOMContentLoaded', () => {
       //get parent element
       let parent = document.querySelector('.display')
 
-      //
+      //create child elements
       let card1 = document.createElement('div')
       let card2 = document.createElement('div')
       let card3 = document.createElement('div')
+
+      //add classnames to children
+      card1.className = 'card-day'
+      card2.className = 'card-day'
+      card3.className = 'card-day'
+      setLoading(card1)
+      setLoading(card2)
+      setLoading(card3)
+
+      //append the children to parent elements
+      parent.appendChild(card1)
+      parent.appendChild(card2)
+      parent.appendChild(card3)
 
       let cityField = document.getElementById('city')
       document.getElementById('submit').addEventListener('click',()=>{
