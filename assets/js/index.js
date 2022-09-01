@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       //Form
       let cityField = document.getElementById('city')
-      document.getElementById('submit').addEventListener('click',()=>{
-            let city = cityField.value
+      document.getElementById('city').addEventListener('change',(e)=>{
+            let city = e.value
             card1.innerHTML = ""
             card2.innerHTML = ""
             card3.innerHTML = ""

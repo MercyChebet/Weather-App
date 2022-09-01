@@ -22,14 +22,15 @@
 }
 
 .form select{
-      width:20rem;
+      width:30rem;
       height:3rem;
       border:none;
       border-radius:15px;
       padding:0.5rem;
       font-size:1.2rem;
-      margin-bottom:1rem;
-      box-shadow: 4px 2px 8px 3px rgb(84, 0, 66);
+      /* margin-bottom:1rem; */
+      box-shadow: 4px 2px 8px 3px #E20871;
+      margin: auto;
 }
 .form button{
       width:20rem;
