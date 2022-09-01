@@ -45,23 +45,24 @@ function renderData(data, card) {
       let parent = document.querySelector('.display')
       let classNm = 'card-' + time.toLocaleLowerCase()
       card.className = classNm
+      console.log(data)
       let html = ''
       html = `
-            <div class="time">${time}</div>
+            <div class="time">Today</div>
             <div class="city">${data.name}</div>
             <div class="desc">${data.weather[0].description}</div>
             <div class="details">
                   <div>
                         <div>Temperature</div>
-                        <div>${data.temp}</div>
+                        <div>${data.main.temp}</div>
                   </div>
                   <div>
                         <div>Humidity</div>
-                        <div>${data.humidity}</div>
+                        <div>${data.main.humidity}</div>
                   </div>
                   <div>
                         <div>Wind Speed</div>
-                        <div>${data.wind}</div>
+                        <div>${data.wind.speed} km/h</div>
                   </div>
             </div>
       `;
@@ -139,7 +140,3 @@ function renderForecast(data, card) {
 
 
 }
-
-
-
-
