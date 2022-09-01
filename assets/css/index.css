@@ -59,18 +59,58 @@
       justify-content: center;
       align-items: center;
       font-family: 'Paytone One', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1rem;
 }
 
 .city{
       height:25%;
-      background-color: #E20871;
       display: flex;
       justify-content: center;
       align-items: center;
       font-family: 'Paytone One', sans-serif;
-      font-size: 2rem;
+      font-size: 3rem;
+}
+
+.details{
+      height:40%;
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      font-family: 'Inter', sans-serif;
+      font-weight: bold;
+}
+
+.desc{
+      height:9%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.3rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: bold;
+      font-style: italic;
+}
+.btn{
+      color:white;
+      width: fit-content;
+      height:7%;
+      padding: 0 2rem;
+      background-color: #E20871;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Paytone One', sans-serif;
+      font-size: 1.2rem;
+      cursor: pointer;
+}
+.details div{
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
 }
 .display{
       padding: 0 5rem;
+      display: flex;
+      justify-content: space-around;
 }
