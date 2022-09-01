@@ -24,7 +24,7 @@ To run this repo you need
 # Contact-info
 
 
-## License
+## Licence
       MIT License
 
       Copyright (c) 2022 Jackson-Kahono
